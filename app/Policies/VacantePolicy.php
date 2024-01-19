@@ -13,7 +13,8 @@ class VacantePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        //el usuario que esta visitando el panel, tiene el rol 2(reclutador)?
+        return $user->rol === 2;
     }
 
     /**
@@ -29,7 +30,8 @@ class VacantePolicy
      */
     public function create(User $user)
     {
-        //
+        //el usuario que va crear , tiene el rol 2(reclutador)?
+        return $user->rol === 2;
     }
 
     /**

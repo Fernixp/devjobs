@@ -12,6 +12,9 @@ class VacanteController extends Controller
      */
     public function index()
     {
+
+        //aca pasamos el modelo como parametro, eso previene el acceso a todo lo relacionado con este modelo
+        $this->authorize('viewAny', Vacante::class);
         return view('vacantes.index');
     }
 
@@ -20,6 +23,7 @@ class VacanteController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Vacante::class); 
         return view('vacantes.create'); 
     }
 
@@ -34,9 +38,11 @@ class VacanteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Vacante $vacante)
     {
-        //
+        return view('vacantes.show', [
+            'vacante' => $vacante]
+        );
     }
 
     /**
